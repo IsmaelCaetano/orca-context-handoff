@@ -1,0 +1,14 @@
+interface:
+  display_name: ORCA Context Handoff
+  short_description: Retome projetos entre Codex, Claude e Antigravity
+  default_prompt: Use $orca-context-handoff para salvar o estado do projeto e preparar
+    a próxima sessão.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
