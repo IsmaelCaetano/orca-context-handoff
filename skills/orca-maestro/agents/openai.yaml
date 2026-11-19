@@ -1,0 +1,4 @@
+interface:
+  display_name: "ORCA Maestro"
+  short_description: "Coordenar o ORCA com Opus 5.5 e especialistas"
+  default_prompt: "Use $orca-maestro com Opus 5.5/medium, exclua GPT-6.2 e confirme os modelos dos especialistas antes de executar."
