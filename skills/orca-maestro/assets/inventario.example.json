@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "purpose": "Modelo de registro do maestro; nao e configuracao nativa do ORCA",
+  "checked_at": null,
+  "host": null,
+  "orca_version": null,
+  "mode": "equilibrado",
+  "max_concurrent_sessions_including_maestro": 3,
+  "api_spend_authorized": false,
+  "executors": [
+    {
+      "executor": "codex",
+      "installed": null,
+      "authenticated": null,
+      "auth_method": "unknown",
+      "model_id": null,
+      "effort": null,
+      "available_models": [],
+      "tools": [],
+      "quota": null,
+      "evidence": null
+    },
+    {
+      "executor": "claude",
+      "installed": null,
+      "authenticated": null,
+      "auth_method": "unknown",
+      "model_id": null,
+      "effort": null,
+      "available_models": [],
+      "tools": [],
+      "quota": null,
+      "evidence": null
+    },
+    {
+      "executor": "gemini",
+      "installed": null,
+      "authenticated": null,
+      "auth_method": "unknown",
+      "model_id": null,
+      "effort": null,
+      "available_models": [],
+      "tools": [],
+      "quota": null,
+      "evidence": null
+    }
+  ],
+  "maestro_required": {
+    "executor": "claude",
+    "model_id": "claude-opus-5-5",
+    "effort": "medium",
+    "locked": true,
+    "automatic_fallback": false
+  },
+  "excluded_model_prefixes": [
+    "gpt-6.2"
+  ]
+}
