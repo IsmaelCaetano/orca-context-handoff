@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "purpose": "Presets de coordenação; não é configuração nativa do ORCA",
   "verified_documentation_at": "2026-11-24",
   "maestro": {
@@ -80,7 +80,14 @@
         {
           "executor": "claude",
           "model_id": "claude-sonnet-5-5",
-          "effort": "medium"
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
+        },
+        {
+          "executor": "codex",
+          "model_id": "gpt-6.1-sol",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -88,30 +95,36 @@
       ],
       "prompt_file": "references/agentes/pesquisa.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-hydrogen",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
     },
     {
       "role": "arquitetura",
-      "executor": "codex",
-      "model_id": "gpt-6-astra",
-      "effort": "high",
+      "executor": "claude",
+      "model_id": "claude-sonnet-5-5",
+      "effort": "medium",
       "fallbacks": [
         {
-          "executor": "claude",
-          "model_id": "claude-opus-5-5",
-          "effort": "high"
+          "executor": "codex",
+          "model_id": "gpt-6.1-sol",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         },
         {
           "executor": "gemini",
-          "model_id": "gemini-4-carbon",
+          "model_id": "gemini-4-hydrogen",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
-        },
-        {
-          "executor": "gemini",
-          "model_id": "gemini-4-neon",
-          "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -119,24 +132,57 @@
       ],
       "prompt_file": "references/agentes/arquitetura.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
+        {
+          "executor": "codex",
+          "model_id": "gpt-6-astra",
+          "effort": "high",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "claude",
+          "model_id": "claude-opus-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
     },
     {
       "role": "frontend",
       "executor": "claude",
       "model_id": "claude-sonnet-5-5",
-      "effort": "high",
+      "effort": "medium",
       "fallbacks": [
         {
           "executor": "codex",
           "model_id": "gpt-6.1-sol",
-          "effort": "high"
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         },
         {
           "executor": "gemini",
           "model_id": "gemini-4-hydrogen",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -145,30 +191,36 @@
       ],
       "prompt_file": "references/agentes/frontend.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
+        {
+          "executor": "claude",
+          "model_id": "claude-sonnet-5-5",
+          "effort": "high",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
     },
     {
       "role": "backend-dados",
       "executor": "codex",
       "model_id": "gpt-6.1-sol",
-      "effort": "high",
+      "effort": "medium",
       "fallbacks": [
         {
           "executor": "claude",
           "model_id": "claude-sonnet-5-5",
-          "effort": "high"
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         },
         {
           "executor": "gemini",
-          "model_id": "gemini-4-carbon",
+          "model_id": "gemini-4-hydrogen",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
-        },
-        {
-          "executor": "gemini",
-          "model_id": "gemini-4-neon",
-          "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -177,30 +229,57 @@
       ],
       "prompt_file": "references/agentes/backend-dados.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
-    },
-    {
-      "role": "seguranca",
-      "executor": "codex",
-      "model_id": "gpt-6-astra",
-      "effort": "high",
-      "fallbacks": [
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
         {
-          "executor": "claude",
-          "model_id": "claude-opus-5-5",
-          "effort": "high"
+          "executor": "codex",
+          "model_id": "gpt-6-astra",
+          "effort": "high",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
         },
         {
           "executor": "gemini",
           "model_id": "gemini-4-carbon",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
         },
         {
           "executor": "gemini",
           "model_id": "gemini-4-neon",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "claude",
+          "model_id": "claude-opus-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
+    },
+    {
+      "role": "seguranca",
+      "executor": "codex",
+      "model_id": "gpt-6.1-sol",
+      "effort": "medium",
+      "fallbacks": [
+        {
+          "executor": "claude",
+          "model_id": "claude-sonnet-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-hydrogen",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -208,30 +287,57 @@
       ],
       "prompt_file": "references/agentes/seguranca.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
-    },
-    {
-      "role": "testes",
-      "executor": "codex",
-      "model_id": "gpt-6.1-sol",
-      "effort": "high",
-      "fallbacks": [
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
         {
-          "executor": "claude",
-          "model_id": "claude-sonnet-5-5",
-          "effort": "high"
+          "executor": "codex",
+          "model_id": "gpt-6-astra",
+          "effort": "high",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
         },
         {
           "executor": "gemini",
           "model_id": "gemini-4-carbon",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
         },
         {
           "executor": "gemini",
           "model_id": "gemini-4-neon",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "claude",
+          "model_id": "claude-opus-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
+    },
+    {
+      "role": "testes",
+      "executor": "codex",
+      "model_id": "gpt-6.1-sol",
+      "effort": "medium",
+      "fallbacks": [
+        {
+          "executor": "claude",
+          "model_id": "claude-sonnet-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-hydrogen",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -240,7 +346,39 @@
       ],
       "prompt_file": "references/agentes/testes.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
+        {
+          "executor": "codex",
+          "model_id": "gpt-6-astra",
+          "effort": "high",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "claude",
+          "model_id": "claude-opus-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
     },
     {
       "role": "visual",
@@ -251,13 +389,20 @@
         {
           "executor": "claude",
           "model_id": "claude-sonnet-5-5",
-          "effort": "medium"
+          "effort": "medium",
+          "requires": "confirmed_browser_access_and_task_fitness"
+        },
+        {
+          "executor": "codex",
+          "model_id": "gpt-6.1-sol",
+          "effort": "medium",
+          "requires": "confirmed_browser_access_and_task_fitness"
         },
         {
           "executor": "gemini",
           "model_id": "gemini-4-hydrogen",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_browser_access_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -265,30 +410,36 @@
       ],
       "prompt_file": "references/agentes/visual.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
+        {
+          "executor": "codex",
+          "model_id": "gpt-6.1-terra",
+          "effort": "high",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
     },
     {
       "role": "revisao",
-      "executor": "codex",
-      "model_id": "gpt-6-astra",
-      "effort": "high",
+      "executor": "claude",
+      "model_id": "claude-sonnet-5-5",
+      "effort": "medium",
       "fallbacks": [
         {
-          "executor": "claude",
-          "model_id": "claude-opus-5-5",
-          "effort": "high"
+          "executor": "codex",
+          "model_id": "gpt-6.1-sol",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         },
         {
           "executor": "gemini",
-          "model_id": "gemini-4-carbon",
+          "model_id": "gemini-4-hydrogen",
           "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
-        },
-        {
-          "executor": "gemini",
-          "model_id": "gemini-4-neon",
-          "effort": "executor-default",
-          "requires": "confirmed_access_tools_and_task_fitness"
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -296,18 +447,57 @@
       ],
       "prompt_file": "references/agentes/revisao.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "choose_other_author_model_for_independence",
+      "escalations": [
+        {
+          "executor": "codex",
+          "model_id": "gpt-6-astra",
+          "effort": "high",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        },
+        {
+          "executor": "claude",
+          "model_id": "claude-opus-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
     },
     {
       "role": "conteudo",
-      "executor": "claude",
-      "model_id": "claude-sonnet-5-5",
-      "effort": "medium",
+      "executor": "gemini",
+      "model_id": "gemini-4-hydrogen",
+      "effort": "executor-default",
       "fallbacks": [
         {
-          "executor": "gemini",
-          "model_id": "gemini-4-hydrogen",
-          "effort": "executor-default"
+          "executor": "claude",
+          "model_id": "claude-sonnet-5-5",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
+        },
+        {
+          "executor": "codex",
+          "model_id": "gpt-6.1-sol",
+          "effort": "medium",
+          "requires": "confirmed_access_tools_budget_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -315,7 +505,18 @@
       ],
       "prompt_file": "references/agentes/conteudo.md",
       "access_status": "unverified",
-      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
+      "selection_rule": "classify_task_verify_inventory_choose_role_default_escalate_only_with_evidence",
+      "complexity": "standard",
+      "independence_rule": "not_applicable",
+      "escalations": [
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-hydrogen",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_budget_and_task_fitness",
+          "requires_escalation_evidence": true
+        }
+      ]
     },
     {
       "role": "integracao",
@@ -477,5 +678,66 @@
       }
     ],
     "note": "Não inferir acesso ao CLI, saldo, independência de pools ou IDs técnicos a partir de rótulos visuais. Modos Orchestrator do seletor são recursos do host, não IDs de modelo nem troca autorizada do maestro."
+  },
+  "routing_policy": {
+    "selection_unit": "logical_task_not_whole_project",
+    "default_complexity": "standard",
+    "default_effort": "medium_when_supported",
+    "precedence": "policy_then_task_complexity_then_role_card",
+    "inherit_maestro_model_for_workers": false,
+    "mandatory_inventory_before_dispatch": true,
+    "missing_inventory_action": "create_from_observed_evidence_before_next_dispatch",
+    "unavailable_executor_action": "exclude_and_record_reason_do_not_stop_healthy_executors",
+    "auto_trust_project": false,
+    "force_provider_percentages": false,
+    "diversification": "task_fit_and_independent_review_not_round_robin",
+    "same_task_failures_before_reassessment": 2,
+    "escalation_reason_required": true,
+    "escalation_fields": [
+      "risk_or_blocker",
+      "evidence",
+      "lower_route_considered",
+      "why_insufficient",
+      "expected_gain"
+    ],
+    "high_effort_requires_justification": true,
+    "strong_worker_requires_justification": true,
+    "maestro_exception": "Opus_5.5_medium_is_user_preference_not_worker_default",
+    "per_task_cost_unknown_action": "record_unknown_do_not_invent_price",
+    "demote_next_tasks_after_hard_stage": true,
+    "concentration_audit_window_logical_tasks": 8,
+    "concentration_audit_action": "review_unjustified_concentration_no_forced_rotation"
+  },
+  "task_classes": {
+    "simple": {
+      "definition": "bounded_low_risk_edit_summary_map_or_existing_check",
+      "default_effort": "medium_or_low_only_if_supported_and_adequate",
+      "model_rule": "smallest_confirmed_adequate_from_inventory_no_new_API",
+      "examples": [
+        "copy edit",
+        "CSS spacing",
+        "project map update",
+        "execute existing targeted check"
+      ],
+      "strong_worker_allowed": "only_evidenced_blocker_or_no_eligible_alternative"
+    },
+    "standard": {
+      "definition": "clear_requirements_local_implementation_or_review",
+      "default_effort": "medium",
+      "model_rule": "Hydrogen_for_research_Sonnet_for_frontend_Sol_for_backend_Terra_for_visual_when_confirmed"
+    },
+    "complex": {
+      "definition": "concrete_high_impact_invariant_or_multi_layer_ambiguity",
+      "default_effort": "confirmed_level_with_reason",
+      "model_rule": "conditional_escalations_only",
+      "examples": [
+        "cross_tenant_auth_failure",
+        "payment_repetition",
+        "data_loss_or_concurrent_write",
+        "unresolved_multi_service_root_cause"
+      ],
+      "first_try_strong_allowed": true,
+      "required": "concrete_risk_evidence_not_just_role_name"
+    }
   }
 }
