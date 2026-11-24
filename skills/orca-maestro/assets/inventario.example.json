@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "purpose": "Modelo de registro do maestro; nao e configuracao nativa do ORCA",
   "checked_at": null,
   "host": null,
@@ -18,7 +18,14 @@
       "available_models": [],
       "tools": [],
       "quota": null,
-      "evidence": null
+      "evidence": null,
+      "quota_pool_id": null,
+      "quota_state": "unknown",
+      "observed_at": null,
+      "retry_after": null,
+      "reset_at": null,
+      "cooldown_until": null,
+      "tools_verified": false
     },
     {
       "executor": "claude",
@@ -30,7 +37,14 @@
       "available_models": [],
       "tools": [],
       "quota": null,
-      "evidence": null
+      "evidence": null,
+      "quota_pool_id": null,
+      "quota_state": "unknown",
+      "observed_at": null,
+      "retry_after": null,
+      "reset_at": null,
+      "cooldown_until": null,
+      "tools_verified": false
     },
     {
       "executor": "gemini",
@@ -42,17 +56,67 @@
       "available_models": [],
       "tools": [],
       "quota": null,
-      "evidence": null
+      "evidence": null,
+      "quota_pool_id": null,
+      "quota_state": "unknown",
+      "observed_at": null,
+      "retry_after": null,
+      "reset_at": null,
+      "cooldown_until": null,
+      "tools_verified": false
     }
   ],
   "maestro_required": {
     "executor": "claude",
     "model_id": "claude-opus-5-5",
     "effort": "medium",
-    "locked": true,
-    "automatic_fallback": false
+    "preferred_locked": true,
+    "automatic_fallback": true,
+    "fallback_only_on": [
+      "quota_exhausted",
+      "confirmed_service_unavailable"
+    ],
+    "fallbacks": [
+      {
+        "executor": "codex",
+        "model_id": "gpt-6.1-sol",
+        "effort": "medium"
+      },
+      {
+        "executor": "gemini",
+        "model_id": "gemini-4-carbon",
+        "effort": "executor-default"
+      },
+      {
+        "executor": "gemini",
+        "model_id": "gemini-4-neon",
+        "effort": "executor-default"
+      }
+    ],
+    "return_policy": "confirmed_recovery_at_safe_checkpoint"
   },
   "excluded_model_prefixes": [
     "gpt-6.2"
-  ]
+  ],
+  "continuity_mode": "assisted",
+  "quota_pools": [],
+  "checkpoint_path": null,
+  "active_coordinator": null,
+  "project_state": "new_or_existing_to_discover",
+  "failover_policy": {
+    "implementation": "instructional_protocol_not_process_controller",
+    "runtime_mode_default": "assisted",
+    "checkpoints": "after_milestones_and_before_external_effects",
+    "single_writer_required": true,
+    "scope": "observed_provider_account_product_quota_pool",
+    "exclude_exhausted_pools": true,
+    "unknown_pool_requires_recheck": true,
+    "max_retry_same_transient_request": 1,
+    "max_candidate_launches_per_incident": 3,
+    "respect_retry_after": true,
+    "unknown_reset_local_cooldown_minutes": 15,
+    "new_paid_api_allowed": false,
+    "unknown_external_result": "reconcile_before_retry",
+    "automatic_mode_requires_host_evidence": true
+  }
 }
