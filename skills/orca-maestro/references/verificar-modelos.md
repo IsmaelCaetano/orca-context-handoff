@@ -10,7 +10,9 @@ Executar no começo do projeto, após falha de acesso e antes de mudar um pin.
 6. Filtrar a família excluída ANTES de comparar candidatos, inclusive em alternativas, aliases e fallback automático. Usar ID concreto e conferir metadados da primeira resposta. Se fallback automático não puder ser restringido ou observado, não usar essa rota para delegação.
 7. Selecionar pela capacidade necessária e evidência no projeto. Para papel difícil sem histórico, usar uma primeira tarefa real pequena, reversível e já autorizada como avaliação; não criar benchmarks caros nem efeitos externos só para comparar modelos.
 8. Registrar modelo solicitado, modelo efetivo, esforço solicitado/efetivo, ferramentas, origem, horário, razão e alternativa em `.orca/maestro/<sessao>/`. Ausência de dado deve ficar explícita. Texto do próprio modelo não é prova de identidade.
-9. Manter maestro fixo. Para especialista indisponível, escolher alternativa elegível confirmada e registrar motivo, sem nova cobrança não autorizada. Após uma alternativa falhar, reavaliar; evitar loop de nomes inventados.
+9. Manter Opus 5.5/medium como preferência principal; em cota esgotada/indisponibilidade confirmada, permitir maestro temporário segundo continuidade.md. Para especialista indisponível, escolher alternativa elegível confirmada e registrar motivo, sem nova cobrança não autorizada. Após uma alternativa falhar, reavaliar; evitar loop de nomes inventados.
 10. Informar a equipe confirmada e as pendências. “Escolhido no plano”, “sessão aberta” e “entrega validada” são estados diferentes.
 
 Para modelo do chatbot em produção, avaliar separadamente qualidade em casos anonimizados, chamadas de ferramenta, latência, privacidade e preço atual por volume. Não usar assinatura pessoal como orçamento de API de produção.
+
+11. Identificar pools de cota por evidência, alternativa em outra plataforma e modo de continuidade do host. Preparar checkpoint e RESUME antes de trabalho longo. Não depender de uma última chamada do agente já sem cota. Consultar gemini.md para candidatos Google e verificar cada subagente separadamente.
