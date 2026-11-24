@@ -9,6 +9,41 @@ Valores de operação propostos, sem alegação de serem limites oficiais ou uma
 | 75% | Preparar próxima sessão; evitar iniciar frente grande |
 | 85% | Concluir entrega de contexto no primeiro ponto seguro |
 
+## Perfil Claude — preferência do usuário, 24/11/2026
+
+Aplicar a qualquer sessão que use modelo Claude, inclusive maestro e workers, independentemente da interface. Os números são tokens de contexto corrente, não créditos, consumo acumulado ou cota. Outros provedores mantêm a política geral.
+
+| Marco | Teto específico Claude |
+| --- | --- |
+| Salvar checkpoint | 300.000 tokens |
+| Preparar troca, sem iniciar frente grande | 350.000 tokens |
+| Iniciar handoff e cessar trabalho de produto na origem | 400.000 tokens |
+| Teto absoluto de contexto permitido pela política | 600.000 tokens |
+
+**400.000 é o alvo de troca; 600.000 não é uma meta de trabalho nem autorização para continuar desenvolvendo.** Entre o handoff e o teto, realizar apenas o mínimo necessário para salvar/verificar estado, acompanhar ou transferir processos e entregar a retomada. Não esperar chegar a 600.000 para salvar.
+
+Para capacidade efetiva C confirmada e reserva R = max(15.000, 10% de C, estimativa conservadora de expansão da próxima ação), calcular:
+- checkpoint = min(60% de C, 300.000);
+- preparação = min(75% de C, 350.000);
+- handoff = min(85% de C, C − R, 400.000, 600.000 − R).
+
+Antecipar checkpoint e preparação se a reserva reduzir o limiar de handoff abaixo deles. Se o limiar já foi cruzado, executar a ação correspondente imediatamente no próximo controle, sem esperar novo cruzamento. Ao projetar estouro de C ou de 600.000, não iniciar a chamada; usar o checkpoint disponível para retomada. Se a medição já ultrapassou o teto, registrar o incidente e não fazer outra chamada normal de desenvolvimento na origem. Um limiar não autoriza matar processos ou fechar terminais.
+
+Exemplos com reserva inicial (antes de considerar expansão adicional):
+| C | Checkpoint | Preparação | Handoff |
+| --- | --- | --- | --- |
+| 200.000 | 120.000 | 150.000 | 170.000 |
+| 400.000 | 240.000 | 300.000 | 340.000 |
+| 1.000.000 | 300.000 | 350.000 | 400.000 |
+
+Registrar no checkpoint modelo, capacidade, ocupação observada, origem da medição e limiares efetivos. Se houver controlador local, atualizar sua configuração separadamente e testar os cruzamentos e a reserva antes de afirmar que o teto está sendo aplicado. Alterar esta skill não reconfigura um vigia já instalado.
+
+Sem telemetria confiável, não é possível assegurar o teto numérico: registrar essa limitação e salvar ao iniciar/retomar, após entregas e etapas relevantes e antes de trocar sessão. A regra em Markdown não intercepta chamadas nem impede sozinha que uma resposta grande ultrapasse o teto. Não alegar bloqueio automático sem controlador validado.
+
+Esta é uma preferência operacional para antecipar a troca por consumo percebido pelo usuário. Não comprova economia financeira, não pressupõe cobrança extra acima de 400.000 e não renova cotas de uso.
+
+## Exemplos gerais (Codex e outros provedores)
+
 Exemplos aritméticos, somente quando a capacidade efetiva for confirmada:
 
 | Capacidade efetiva | Checkpoint 60% | Preparar 75% | Transição 85% |

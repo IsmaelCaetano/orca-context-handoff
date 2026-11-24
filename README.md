@@ -27,6 +27,12 @@ Com capacidade efetiva confirmada de 200.000 tokens: 120.000 / 150.000 / 170.000
 
 Veja [política completa de limites](skills/orca-context-handoff/references/limits.md).
 
+### Limites específicos do Claude
+
+Para maestro e workers Claude: **300 mil → salvar; 350 mil → preparar; 400 mil → iniciar handoff; 600 mil → teto absoluto**. O objetivo é trocar em 400 mil; a faixa até 600 mil fica reservada à entrega do estado, sem continuar desenvolvimento. Janelas menores e reserva de execução antecipam esses valores. Codex e modelos não Claude mantêm os percentuais gerais.
+
+A regra usa contexto corrente observado. Sem telemetria e controlador validado, não há garantia automática do teto. Atualize também as cópias instaladas no projeto e a configuração de eventual vigia local; o GitHub sozinho não altera seu Orca. Veja a [precedência e os exemplos](skills/orca-context-handoff/references/limits.md).
+
 ## Instalar no projeto do Orca
 
 O Orca é o ambiente onde você abre o projeto. Instale a skill nos caminhos lidos pelo agente usado dentro dele; não é uma extensão do Orca.
@@ -68,8 +74,10 @@ Use orca-context-handoff para salvar um checkpoint deste projeto e preparar a pr
 
 ```text
 Use orca-context-handoff neste projeto. Leia a skill e suas referências.
-Adote checkpoint em 60%, preparação em 75% e transição em 85% da capacidade
-real disponível, antecipando se a reserva exigir. Sem telemetria confiável,
+Aplique o perfil Claude de limits.md: checkpoint até 300 mil, preparação até
+350 mil, handoff até 400 mil e teto absoluto de 600 mil tokens de contexto.
+Janelas menores e reserva antecipam esses valores. Para outros provedores,
+use 60% / 75% / 85% da capacidade efetiva. Sem telemetria confiável,
 salve por etapas concluídas e não invente percentuais.
 Acrescente uma referência curta ao protocolo nas instruções existentes do
 projeto, preservando o conteúdo atual. Demonstre uma gravação e leitura de

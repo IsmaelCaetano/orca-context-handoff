@@ -19,6 +19,8 @@ Identificar host, versão, modelo e raiz/worktree. Usar somente telemetria expos
 
 Usar os limiares recomendados de 60% para checkpoint, 75% para preparar transição e 85% para concluir a transição em um ponto seguro. São recomendações ajustáveis, não limites oficiais. Reservar espaço para ferramentas, saída e gravação do checkpoint conforme a referência de limites. Sem telemetria, usar checkpoints por marcos e registrar uso desconhecido.
 
+Para sessões Claude (orquestrador ou worker), aplicar o perfil específico: checkpoint em 300.000 tokens, preparação em 350.000, handoff em 400.000 e teto de 600.000 tokens de contexto corrente. Esses tetos só antecipam os limites percentuais; nunca aumentam uma janela menor. Ler a regra de reserva e precedência em references/limits.md. Codex e Gemini/Antigravity com modelo não Claude mantêm a política percentual.
+
 ## Salvar checkpoint
 
 1. Localizar instruções do projeto e confirmar o objetivo e escopo vigentes. Se já existir STATUS.md ou outro protocolo de continuidade, preservar o conteúdo e adaptar-se a ele; não sobrescrever arquivos desconhecidos.
@@ -31,7 +33,7 @@ Usar os limiares recomendados de 60% para checkpoint, 75% para preparar transiç
 
 ## Preparar a troca
 
-Em 75%, concluir somente a unidade em andamento ou alcançar um ponto recuperável; não iniciar nova frente grande. Em 85%, priorizar salvar e entregar o estado. Não bloquear as operações necessárias para salvar, inspecionar ou aguardar processos.
+Ao atingir o limiar efetivo de preparação (Claude: no máximo 350.000 tokens), concluir somente a unidade em andamento ou alcançar um ponto recuperável; não iniciar nova frente grande. Ao atingir o limiar efetivo de handoff (Claude: no máximo 400.000 tokens), priorizar salvar e entregar o estado. Não bloquear as operações necessárias para salvar, inspecionar ou aguardar processos.
 
 Não matar processos nem fechar terminal, aba ou aplicativo como consequência do limiar. Verificar processos pertencentes à sessão e ações externas em andamento; não considerar processos de outras sessões como bloqueadores. Um servidor independente pode continuar se o endereço, identificação e independência do terminal forem confirmados. Se a situação de um processo for desconhecida, marcar a troca automática como bloqueada.
 
