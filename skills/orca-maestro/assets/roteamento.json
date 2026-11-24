@@ -1,13 +1,35 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "purpose": "Presets de coordenação; não é configuração nativa do ORCA",
-  "verified_documentation_at": "2026-11-19",
+  "verified_documentation_at": "2026-11-24",
   "maestro": {
     "executor": "claude",
     "model_id": "claude-opus-5-5",
     "effort": "medium",
-    "locked": true,
-    "automatic_fallback": false
+    "preferred_locked": true,
+    "automatic_fallback": true,
+    "fallback_only_on": [
+      "quota_exhausted",
+      "confirmed_service_unavailable"
+    ],
+    "fallbacks": [
+      {
+        "executor": "codex",
+        "model_id": "gpt-6.1-sol",
+        "effort": "medium"
+      },
+      {
+        "executor": "gemini",
+        "model_id": "gemini-4-carbon",
+        "effort": "executor-default"
+      },
+      {
+        "executor": "gemini",
+        "model_id": "gemini-4-neon",
+        "effort": "executor-default"
+      }
+    ],
+    "return_policy": "confirmed_recovery_at_safe_checkpoint"
   },
   "excluded_model_prefixes": [
     "gpt-6.2"
@@ -24,13 +46,30 @@
       "executor": "claude",
       "model_id": "claude-opus-5-5",
       "effort": "medium",
-      "fallbacks": [],
+      "fallbacks": [
+        {
+          "executor": "codex",
+          "model_id": "gpt-6.1-sol",
+          "effort": "medium"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default"
+        }
+      ],
       "tools_required": [
         "ler projeto",
         "controle de sessões quando disponível"
       ],
       "prompt_file": "references/agentes/maestro.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "contingency_policy": "maestro_temporario"
     },
     {
       "role": "pesquisa",
@@ -48,7 +87,8 @@
         "web"
       ],
       "prompt_file": "references/agentes/pesquisa.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "arquitetura",
@@ -60,13 +100,26 @@
           "executor": "claude",
           "model_id": "claude-opus-5-5",
           "effort": "high"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
         }
       ],
       "tools_required": [
         "ler projeto"
       ],
       "prompt_file": "references/agentes/arquitetura.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "frontend",
@@ -78,6 +131,12 @@
           "executor": "codex",
           "model_id": "gpt-6.1-sol",
           "effort": "high"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-hydrogen",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -85,7 +144,8 @@
         "terminal"
       ],
       "prompt_file": "references/agentes/frontend.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "backend-dados",
@@ -97,6 +157,18 @@
           "executor": "claude",
           "model_id": "claude-sonnet-5-5",
           "effort": "high"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -104,7 +176,8 @@
         "terminal"
       ],
       "prompt_file": "references/agentes/backend-dados.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "seguranca",
@@ -116,13 +189,26 @@
           "executor": "claude",
           "model_id": "claude-opus-5-5",
           "effort": "high"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
         }
       ],
       "tools_required": [
         "ler projeto"
       ],
       "prompt_file": "references/agentes/seguranca.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "testes",
@@ -134,6 +220,18 @@
           "executor": "claude",
           "model_id": "claude-sonnet-5-5",
           "effort": "high"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
         }
       ],
       "tools_required": [
@@ -141,7 +239,8 @@
         "ambiente de teste"
       ],
       "prompt_file": "references/agentes/testes.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "visual",
@@ -153,13 +252,20 @@
           "executor": "claude",
           "model_id": "claude-sonnet-5-5",
           "effort": "medium"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-hydrogen",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
         }
       ],
       "tools_required": [
         "navegador"
       ],
       "prompt_file": "references/agentes/visual.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "revisao",
@@ -171,13 +277,26 @@
           "executor": "claude",
           "model_id": "claude-opus-5-5",
           "effort": "high"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default",
+          "requires": "confirmed_access_tools_and_task_fitness"
         }
       ],
       "tools_required": [
         "ler diff"
       ],
       "prompt_file": "references/agentes/revisao.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "conteudo",
@@ -195,20 +314,105 @@
         "briefing"
       ],
       "prompt_file": "references/agentes/conteudo.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "selection_rule": "filter_access_tools_budget_exclusions_and_quota_pool_before_order"
     },
     {
       "role": "integracao",
       "executor": "claude",
       "model_id": "claude-opus-5-5",
       "effort": "medium",
-      "fallbacks": [],
+      "fallbacks": [
+        {
+          "executor": "codex",
+          "model_id": "gpt-6.1-sol",
+          "effort": "medium"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-carbon",
+          "effort": "executor-default"
+        },
+        {
+          "executor": "gemini",
+          "model_id": "gemini-4-neon",
+          "effort": "executor-default"
+        }
+      ],
       "tools_required": [
         "git",
         "terminal"
       ],
       "prompt_file": "references/agentes/integracao.md",
-      "access_status": "unverified"
+      "access_status": "unverified",
+      "contingency_policy": "maestro_temporario"
+    }
+  ],
+  "continuity": {
+    "implementation": "instructional_protocol_not_process_controller",
+    "runtime_mode_default": "assisted",
+    "checkpoints": "after_milestones_and_before_external_effects",
+    "single_writer_required": true,
+    "scope": "observed_provider_account_product_quota_pool",
+    "exclude_exhausted_pools": true,
+    "unknown_pool_requires_recheck": true,
+    "max_retry_same_transient_request": 1,
+    "max_candidate_launches_per_incident": 3,
+    "respect_retry_after": true,
+    "unknown_reset_local_cooldown_minutes": 15,
+    "new_paid_api_allowed": false,
+    "unknown_external_result": "reconcile_before_retry",
+    "automatic_mode_requires_host_evidence": true
+  },
+  "gemini_catalog": [
+    {
+      "model_id": "gemini-4-carbon",
+      "executor": "gemini",
+      "effort": "executor-default",
+      "access_status": "unverified",
+      "source": "https://aistudio.google.com/docs/models"
+    },
+    {
+      "model_id": "gemini-4-neon",
+      "executor": "gemini",
+      "effort": "executor-default",
+      "access_status": "unverified",
+      "source": "https://aistudio.google.com/docs/models"
+    },
+    {
+      "model_id": "gemini-4-argon",
+      "executor": "gemini",
+      "effort": "executor-default",
+      "access_status": "unverified",
+      "source": "https://aistudio.google.com/docs/models"
+    },
+    {
+      "model_id": "gemini-4-hydrogen",
+      "executor": "gemini",
+      "effort": "executor-default",
+      "access_status": "unverified",
+      "source": "https://aistudio.google.com/docs/models"
+    },
+    {
+      "model_id": "gemini-3.8-flash",
+      "executor": "gemini",
+      "effort": "executor-default",
+      "access_status": "unverified",
+      "source": "https://aistudio.google.com/docs/models"
+    },
+    {
+      "model_id": "gemini-3.5-flash-lite",
+      "executor": "gemini",
+      "effort": "executor-default",
+      "access_status": "unverified",
+      "source": "https://aistudio.google.com/docs/models"
+    },
+    {
+      "model_id": "gemini-3.1-pro-preview",
+      "executor": "gemini",
+      "effort": "executor-default",
+      "access_status": "unverified",
+      "source": "https://aistudio.google.com/docs/models"
     }
   ]
 }
