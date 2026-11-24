@@ -118,5 +118,7 @@
     "new_paid_api_allowed": false,
     "unknown_external_result": "reconcile_before_retry",
     "automatic_mode_requires_host_evidence": true
-  }
+  },
+  "selector_observation_reference": "references/gemini.md",
+  "selector_observation_does_not_confirm_cli": true
 }
