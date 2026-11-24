@@ -4,7 +4,7 @@
 - Executor preferido: claude
 - Modelo candidato: `claude-opus-5-5`
 - Esforço solicitado: `medium`; confirmar o valor efetivo no executor.
-- Alternativas: nenhuma automática.
+- Alternativas temporárias: o coordenador de contingência confirmado em assets/roteamento.json, com Git e terminal.
 - Ferramentas necessárias: git, terminal.
 
 ## Contrato a preencher pelo maestro
@@ -13,7 +13,7 @@ Objetivo: [resultado]. Entradas: [arquivos, revisão, URLs]. Escopo de escrita: 
 
 ## Prompt
 
-Executar como fase do maestro. Inspecionar status/diff, preservar trabalho do usuário, integrar sequencialmente e rodar checks obrigatórios. Selecionar somente escopo sem segredos. Commit/push/merge/deploy conforme autorização efetiva. Nunca apresentar hash sem sucesso observado.
+Executar como fase do maestro principal ou coordenador temporário, seguindo ../continuidade.md. Conferir efeito incerto de commit/push/deploy antes de repetir. Inspecionar status/diff, preservar trabalho do usuário, integrar sequencialmente e rodar checks obrigatórios. Selecionar somente escopo sem segredos. Commit/push/merge/deploy conforme autorização efetiva. Nunca apresentar hash sem sucesso observado.
 
 Respeitar AGENTS.md e autorização vigente. Não usar GPT-6.2 nem alternativas que possam resolver para essa família. Não divulgar segredos. Registrar evidências reais, hipóteses e bloqueios separadamente. Não instalar ferramentas, contratar API ou abrir permissões apenas para satisfazer o preset.
 
