@@ -44,3 +44,7 @@ Atualizar a evidência ao iniciar projeto, após indisponibilidade ou pedido de 
 ## Catálogo Gemini e continuidade
 
 Ler [gemini.md](gemini.md) para Carbon, Neon, Argon, Hydrogen, Flash e compatibilidade Pro. As rotas em assets/roteamento.json incluem candidatos Gemini por papel; todos exigem confirmação real no CLI/Antigravity. Usar [continuidade.md](continuidade.md) para esgotamento de cota, troca de plataforma, escritor único, checkpoint e retomada sem repetir efeitos externos. Excluir todo pool esgotado antes de seguir a ordem das alternativas.
+
+## Evidência no seletor do usuário
+
+Em 24/11/2026, o usuário confirmou por imagem Neon/High, Carbon/Medium e Hydrogen/Medium; Argon/Medium e Flash 3.8/Medium aparecem com Leaving Soon. Preservar Carbon nas rotas. Para projeto novo, evitar defaults com aviso de saída próxima. A imagem também mostra Opus e Sonnet 5.5/Medium; não tratar Sonnet/High como confirmado nessa superfície. Conferir o executor real antes de converter níveis ou IDs. Ver gemini.md para a matriz observada.
