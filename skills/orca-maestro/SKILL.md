@@ -17,6 +17,9 @@ Escolher a menor equipe capaz de entregar com evidência. Tratar os perfis como 
 
 ## 2. Fixar maestro e escolher modo
 
+Usar a evidência de seletor em references/gemini.md: Carbon foi confirmado pelo usuário e permanece elegível. Evitar modelos marcados Leaving Soon como padrão de projeto novo; imagem de um seletor não comprova acesso ao mesmo modelo no CLI ou pools de cota independentes.
+
+
 Usar **Claude Opus 5.5 (`claude-opus-5-5`), esforço `medium`, no Claude Code** como maestro principal. Não elevar seu esforço nem trocar por novidade ou conveniência. Por autorização do proprietário, permitir substituto TEMPORÁRIO de outra plataforma quando houver cota esgotada ou indisponibilidade comprovada, seguindo [continuidade.md](references/continuidade.md) e a ordem em `assets/roteamento.json`. Manter a preferência original e devolver a coordenação em ponto seguro após recuperação confirmada. Se o esforço medium não for suportado, não usar outro esforço silenciosamente.
 
 **Excluir toda a família GPT-6.2 (`gpt-6.2*`) de qualquer papel, alternativa, subagente nativo ou roteamento automático.** Atualização do catálogo não remove esta exclusão. Não afirmar que a família é universalmente ruim: respeitar a restrição do usuário sem inventar evidência comparativa.
