@@ -23,3 +23,14 @@ Registrar objetivo, entradas, exclusões, aceite e saída de cada delegação. R
 ## Decisões e conclusão
 
 Registrar trocas de modelo, motivos, custo/consumo somente se observados, achados, correções, hash se commit realizado, pendências e próxima ação.
+
+## Continuidade e auditoria
+
+- Maestro preferido e coordenador ativo:
+- Modo real: assisted / automatic_validated com evidência:
+- Alternativa confirmada em outra plataforma por papel crítico:
+- Pools observados e escopo desconhecido:
+- Checkpoint/RESUME atual e responsável:
+- Dono de escrita e transferência de autoridade:
+- Ações externas pendentes de reconciliação:
+- Evento de troca, motivo, tentativa e próximo ponto de retorno:
