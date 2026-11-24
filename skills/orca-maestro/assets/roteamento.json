@@ -369,36 +369,56 @@
       "model_id": "gemini-4-carbon",
       "executor": "gemini",
       "effort": "executor-default",
-      "access_status": "unverified",
-      "source": "https://aistudio.google.com/docs/models"
+      "access_status": "observed_in_user_selector_CLI_unverified",
+      "source": "https://aistudio.google.com/docs/models",
+      "user_selector_label": "Gemini 4 Carbon",
+      "user_selector_effort_label": "Medium",
+      "lifecycle_label": null,
+      "new_project_priority": "eligible_after_host_verification"
     },
     {
       "model_id": "gemini-4-neon",
       "executor": "gemini",
       "effort": "executor-default",
-      "access_status": "unverified",
-      "source": "https://aistudio.google.com/docs/models"
+      "access_status": "observed_in_user_selector_CLI_unverified",
+      "source": "https://aistudio.google.com/docs/models",
+      "user_selector_label": "Gemini 4 Neon",
+      "user_selector_effort_label": "High",
+      "lifecycle_label": null,
+      "new_project_priority": "eligible_after_host_verification"
     },
     {
       "model_id": "gemini-4-argon",
       "executor": "gemini",
       "effort": "executor-default",
-      "access_status": "unverified",
-      "source": "https://aistudio.google.com/docs/models"
+      "access_status": "observed_in_user_selector_CLI_unverified",
+      "source": "https://aistudio.google.com/docs/models",
+      "user_selector_label": "Gemini 4 Argon",
+      "user_selector_effort_label": "Medium",
+      "lifecycle_label": "Leaving Soon",
+      "new_project_priority": "secondary_avoid_new_default"
     },
     {
       "model_id": "gemini-4-hydrogen",
       "executor": "gemini",
       "effort": "executor-default",
-      "access_status": "unverified",
-      "source": "https://aistudio.google.com/docs/models"
+      "access_status": "observed_in_user_selector_CLI_unverified",
+      "source": "https://aistudio.google.com/docs/models",
+      "user_selector_label": "Gemini 4 Hydrogen",
+      "user_selector_effort_label": "Medium",
+      "lifecycle_label": null,
+      "new_project_priority": "eligible_after_host_verification"
     },
     {
       "model_id": "gemini-3.8-flash",
       "executor": "gemini",
       "effort": "executor-default",
-      "access_status": "unverified",
-      "source": "https://aistudio.google.com/docs/models"
+      "access_status": "observed_in_user_selector_CLI_unverified",
+      "source": "https://aistudio.google.com/docs/models",
+      "user_selector_label": "Gemini 3.8 Flash",
+      "user_selector_effort_label": "Medium",
+      "lifecycle_label": "Leaving Soon",
+      "new_project_priority": "secondary_avoid_new_default"
     },
     {
       "model_id": "gemini-3.5-flash-lite",
@@ -414,5 +434,48 @@
       "access_status": "unverified",
       "source": "https://aistudio.google.com/docs/models"
     }
-  ]
+  ],
+  "user_surface_observation": {
+    "observed_at": "2026-11-24",
+    "source": "user_provided_selector_screenshot",
+    "scope": "selector_labels_only_not_CLI_ID_or_quota_confirmation",
+    "models": [
+      {
+        "display_name": "Gemini 4 Neon",
+        "display_effort": "High",
+        "lifecycle_label": null
+      },
+      {
+        "display_name": "Gemini 4 Carbon",
+        "display_effort": "Medium",
+        "lifecycle_label": null
+      },
+      {
+        "display_name": "Gemini 4 Hydrogen",
+        "display_effort": "Medium",
+        "lifecycle_label": null
+      },
+      {
+        "display_name": "Gemini 4 Argon",
+        "display_effort": "Medium",
+        "lifecycle_label": "Leaving Soon"
+      },
+      {
+        "display_name": "Gemini 3.8 Flash",
+        "display_effort": "Medium",
+        "lifecycle_label": "Leaving Soon"
+      },
+      {
+        "display_name": "Claude Opus 5.5",
+        "display_effort": "Medium",
+        "lifecycle_label": null
+      },
+      {
+        "display_name": "Claude Sonnet 5.5",
+        "display_effort": "Medium",
+        "lifecycle_label": null
+      }
+    ],
+    "note": "Não inferir acesso ao CLI, saldo, independência de pools ou IDs técnicos a partir de rótulos visuais. Modos Orchestrator do seletor são recursos do host, não IDs de modelo nem troca autorizada do maestro."
+  }
 }
