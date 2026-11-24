@@ -1,6 +1,6 @@
 # Perfis prontos
 
-O maestro é sempre Opus 5.5/medium. Usar os IDs, esforços e alternativas em `assets/roteamento.json`, com confirmação no host. Fichas são papéis disponíveis; abrir somente os necessários e respeitar o teto do modo.
+O maestro principal é Opus 5.5/medium; contingência temporária segue continuidade.md. Usar os IDs, esforços e alternativas em `assets/roteamento.json`, com confirmação no host. Fichas são papéis disponíveis; abrir somente os necessários e respeitar o teto do modo.
 
 | Demanda | Especialistas por ordem de necessidade | Validação mínima |
 |---|---|---|
@@ -19,4 +19,6 @@ Segurança e revisão devem usar sessão limpa, preferindo outro modelo/executor
 
 Para chatbot em produção, avaliar modelo de resposta separadamente da equipe de construção. Não prometer custo zero pela assinatura dos executores. Para landing, não criar backend desnecessário. Para dados, não executar escrita em produção só para validar.
 
-Modo crítico acrescenta revisão e especialistas, mantendo o maestro fixo. Tarefas simples não exigem equipe inteira. Modelo com bom posicionamento oficial continua sujeito à evidência real e às ferramentas disponíveis.
+Modo crítico acrescenta revisão e especialistas, preservando o maestro preferido e a política de contingência. Tarefas simples não exigem equipe inteira. Modelo com bom posicionamento oficial continua sujeito à evidência real e às ferramentas disponíveis.
+
+Para cada perfil, preparar rota Gemini elegível: Carbon/Neon para engenharia complexa e revisão; Hydrogen para pesquisa, conteúdo e tarefas delimitadas; Argon como alternativa confirmada quando adequado. Não trocar revisão de acesso/tenant por Flash-Lite só porque há cota. Validar ferramentas e capacidade do destino antes de confirmar retomada.
