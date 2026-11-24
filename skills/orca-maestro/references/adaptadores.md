@@ -45,3 +45,7 @@ Não equivaler assinatura a API gratuita. Não inventar limites de cinco horas, 
 ## Distribuição
 
 Manter a versão fonte no GitHub. Não instalar esta skill na conta ChatGPT. Instalar no projeto ORCA apenas quando solicitado. Fichas em `references/agentes/` são contratos portáteis; não copiar como agentes nativos Claude sem converter o frontmatter segundo a documentação da versão.
+
+## Troca entre executores
+
+Usar continuidade.md e gemini.md. Conferir no host se há controlador de processos/sessões independente do maestro. Não inventar flags ORCA de fallback. Sem controlador, gerar RESUME em disco e comandos confirmados para retomada assistida. Confirmar a parada de processos escritores antes de passar a tarefa; worktrees distintos não tornam segura a duplicação de uma ação externa. Não mudar credencial, conta ou habilitar faturamento para resolver cota. A política permite substituto temporário do maestro por cota, preservando Opus 5.5/medium como preferência.
