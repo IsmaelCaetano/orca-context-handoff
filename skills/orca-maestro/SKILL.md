@@ -85,3 +85,8 @@ Para projeto novo, usar [inicio-projeto.md](references/inicio-projeto.md) para v
 ## Invocação
 
 “Use orca-maestro. Projeto: site Next.js com Supabase. Modo: equilibrado. Priorizar minhas assinaturas existentes. Manter Opus 5.5/medium como maestro, excluir GPT-6.2, verificar modelos e preparar os especialistas antes de executar.”
+
+
+## Supervisão de contexto de cada agente
+
+Quando orca-context-handoff estiver disponível, aplicar os mesmos limites a maestro e workers de todos os provedores: checkpoint 400k, pedido de transição 450k, alvo de handoff 500k e teto de política 600k, com antecipação por janela/reserva. Registrar cada sessão no controlador Python, vincular telemetria real, consultar gate e incluir release/accept no despacho. Não confundir configuração do vigia com sua execução. Ver references/continuidade.md.

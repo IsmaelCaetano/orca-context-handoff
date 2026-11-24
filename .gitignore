@@ -1,2 +1,9 @@
 # Checkpoints são locais ao projeto de trabalho e podem conter dados privados.
 .context-handoff/
+
+# Runtime local e caches Python
+.orca/handoff/
+.orca/audit/handoffs/CONTROLLER.md
+__pycache__/
+*.pyc
+

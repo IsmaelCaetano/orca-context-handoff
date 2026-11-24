@@ -1,6 +1,6 @@
 # Adaptadores e instalação local
 
-Compatibilidade de instruções não significa telemetria ou automação idêntica. Inspecionar versão instalada e ajuda local antes de integrar comandos. Esta versão contém protocolo e templates; não instala hooks nem controlador de sessões.
+Compatibilidade de instruções não significa telemetria ou automação idêntica. Inspecionar versão instalada e ajuda local antes de integrar comandos. A versão 3.0 inclui controlador Python e instalador opcional Claude. Para ativação real e limites por host, ler [automatico.md](automatico.md).
 
 ## Instalar no projeto
 
@@ -30,9 +30,9 @@ Para controlador por hooks, consultar a referência oficial de eventos e schemas
 
 Confirmar se é App, IDE ou CLI e a versão. `.agents/skills` é o caminho atual documentado; `.agent/skills` é legado em versões que o suportam. Criar conversa nova pelo mecanismo disponível e apontar para o checkpoint no mesmo workspace. Não presumir que comandos Claude ou Codex funcionam aqui. Sem API de telemetria/lifecycle confirmada, manter troca manual assistida.
 
-## Orca e abertura automática — próxima camada
+## Orca e abertura automática — runtime 3.0
 
-Validar `orca --help` e o subcomando de criação de terminal na máquina real. O repositório de inspiração sugere `orca terminal create`, mas esta skill não validou a instalação do usuário. Compor comandos com argumentos separados em vez de concatenar prompt/caminho no shell. Não copiar flags de bypass de permissões. A nova sessão deve respeitar as permissões do usuário.
+Validar `orca --help` e o subcomando de criação de terminal na máquina real. O repositório de inspiração sugere `orca terminal create`, mas esta skill não validou a instalação do usuário. Compor comandos com argumentos separados em vez de concatenar prompt/caminho no shell. Não copiar flags de bypass de permissões. A nova sessão deve respeitar as permissões do usuário. O helper scripts/handoff.py agora implementa terminal show/send/create/close; consultar automatico.md para configuração e testes.
 
 Antes de habilitar abertura automática, testar em projeto descartável: abaixo dos limiares, limites cruzados, telemetria ausente, checkpoint sem gravação, processo ativo/desconhecido, caminho Windows com espaços, abertura falhando e evento Stop repetido. Exigir checkpoint válido, lock de escritor e abertura única por session-id. Para confirmação de destino, usar timeout e estado de falha, sem relançamento infinito. Erro do monitor deve gerar diagnóstico local curto sem segredos; não impedir salvar o trabalho.
 
@@ -47,3 +47,4 @@ Antes de habilitar abertura automática, testar em projeto descartável: abaixo 
 - Antigravity skills: https://antigravity.google/docs/skills
 
 Rever documentação e ajuda local ao implementar adaptadores; comandos e caminhos podem mudar.
+

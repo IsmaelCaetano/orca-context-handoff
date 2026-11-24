@@ -51,3 +51,12 @@ Se todas as plataformas elegíveis acabarem, salvar estado, informar bloqueio e 
 - Google modelo da sessão não impõe modelo de subagentes: https://geminicli.com/docs/cli/model/
 
 Este protocolo é instrução operacional, não implementação de um supervisor. Teste de mesa prova coerência da política; somente teste no host prova troca real.
+
+
+## Controlador por contexto (3.0, todos os agentes)
+
+Para contexto corrente, usar orca-context-handoff/scripts/handoff.py com política global 400k checkpoint / 450k preparação / alvo 500k handoff / teto 600k, antecipada em janelas menores. Essa regra vale para maestro e todos os workers/subagentes, sem exceção por provedor.
+
+Antes de iniciar trabalho longo, configurar e testar a supervisão em terminal separado. Registrar cada escritor pelo terminal real e vincular sua telemetria; incluir gate e o protocolo release/accept no despacho. No Claude, usar adaptador statusline/PreToolUse; Codex usa rollout; Antigravity/outros exigem adaptador normalizado real. A existência da skill não prova registro nem publicação de tokens.
+
+O controlador abre o sucessor e fecha a origem somente após ACK e validação. Ele preserva a configuração de agente registrada; a rota por cota continua sob responsabilidade do maestro. Não prometer failover por cota com esse controlador de contexto. Consultar a referência automatico.md da instalação de orca-context-handoff quando ela estiver disponível; não presumir dependência instalada.
