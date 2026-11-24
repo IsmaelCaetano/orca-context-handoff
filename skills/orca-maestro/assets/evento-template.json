@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "event": "handoff_pending",
+  "timestamp": null,
+  "project_id": null,
+  "task_id": null,
+  "incident_id": null,
+  "reason": null,
+  "evidence_redacted": null,
+  "quota_scope": "unknown",
+  "source": {
+    "executor": null,
+    "model_id": null,
+    "effort": null,
+    "pool_id": null,
+    "session_id": null
+  },
+  "target": {
+    "executor": null,
+    "model_id": null,
+    "effort": null,
+    "pool_id": null,
+    "session_id": null,
+    "access_confirmed": false
+  },
+  "checkpoint_path": null,
+  "writer": {
+    "old_stopped_or_isolated": false,
+    "current_owner": null,
+    "transfer_confirmed": false
+  },
+  "external_actions_reconciled": false,
+  "retry_after_observed": null,
+  "reset_at_observed": null,
+  "continuity_mode": "assisted",
+  "result": "pending"
+}
