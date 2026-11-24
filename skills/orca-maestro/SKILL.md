@@ -1,6 +1,6 @@
 ---
 name: orca-maestro
-description: Escolher um agente maestro, modelos, níveis de raciocínio e especialistas para projetos no ORCA. Usar ao montar equipes com Codex/ChatGPT, Claude Code, Gemini CLI ou Antigravity; distribuir pesquisa, UX, desenvolvimento, segurança, testes, revisão e integração; ou escolher modelos por qualidade, cota e custo.
+description: Escolher um agente maestro, modelos, níveis de raciocínio e especialistas para projetos no ORCA. Usar ao montar equipes com Codex/ChatGPT, Claude Code, Gemini CLI ou Antigravity; distribuir pesquisa, UX, desenvolvimento, segurança, testes, revisão e integração; escolher modelos por qualidade, cota e custo; ou transferir tarefas entre plataformas após esgotamento de cota.
 ---
 
 # ORCA Maestro
@@ -17,13 +17,13 @@ Escolher a menor equipe capaz de entregar com evidência. Tratar os perfis como 
 
 ## 2. Fixar maestro e escolher modo
 
-Usar obrigatoriamente **Claude Opus 5.5 (`claude-opus-5-5`), esforço `medium`, no Claude Code** como maestro. Esta é uma preferência explícita do proprietário, não uma escolha automática por benchmark. Não elevar o esforço nem trocar o maestro por modo, falta de cota, novidade ou conveniência. Se o modelo/esforço não estiver disponível, preservar trabalho e informar o bloqueio; pedir outra escolha somente se necessário para continuar.
+Usar **Claude Opus 5.5 (`claude-opus-5-5`), esforço `medium`, no Claude Code** como maestro principal. Não elevar seu esforço nem trocar por novidade ou conveniência. Por autorização do proprietário, permitir substituto TEMPORÁRIO de outra plataforma quando houver cota esgotada ou indisponibilidade comprovada, seguindo [continuidade.md](references/continuidade.md) e a ordem em `assets/roteamento.json`. Manter a preferência original e devolver a coordenação em ponto seguro após recuperação confirmada. Se o esforço medium não for suportado, não usar outro esforço silenciosamente.
 
 **Excluir toda a família GPT-6.2 (`gpt-6.2*`) de qualquer papel, alternativa, subagente nativo ou roteamento automático.** Atualização do catálogo não remove esta exclusão. Não afirmar que a família é universalmente ruim: respeitar a restrição do usuário sem inventar evidência comparativa.
 
 Confirmar modelo e esforço efetivos na sessão principal e em cada filho. Conferir ambiente, configurações e eventuais fallbacks automáticos sem expor segredos. Não usar Auto/alias que possa resolver para modelo excluído. Preferir IDs concretos verificados. Caso o host não permita confirmar a exclusão e o modelo efetivo, marcar sessão pendente/bloqueada em vez de iniciá-la como confirmada.
 
-Usar modo equilibrado por padrão. Todos os modos mantêm o maestro Opus 5.5/medium.
+Usar modo equilibrado por padrão. Todos os modos preservam a preferência Opus 5.5/medium e a política de contingência.
 
 | Modo | Política operacional inicial |
 |---|---|
@@ -49,7 +49,7 @@ Produzir uma tabela com papel, executor, ID do modelo, esforço efetivamente sup
 
 Criar ou atualizar `.orca/maestro/<sessao>/plano.md` no projeto somente quando houver autorização para escrever. Incluir objetivo, critérios de aceite, inventário sem segredos, decisões, dependências, responsáveis e arquivos de saída. Manter as evidências no projeto; preservar a skill genérica sem dados de cliente.
 
-Fixar modelos confirmados durante a tarefa. Não trocar silenciosamente por indisponibilidade ou quota. Registrar alternativa, motivo e efeito na qualidade. Em acesso negado ou modelo inválido, consultar o seletor uma vez e tentar uma alternativa confirmada; não entrar em loop. Se todos falharem, marcar bloqueado com a próxima ação concreta.
+Fixar modelos confirmados durante a tarefa normal. Aplicar contingência registrada quando necessário, sem nova confirmação para cada troca já autorizada. Para cota de plataforma, excluir todo o pool afetado; trocar Sonnet por Opus pode continuar no mesmo limite. Para nome inválido, consultar o seletor uma vez; para auth/permissão/erro de código, tratar a causa sem rotação cega. Se todos os candidatos elegíveis falharem, salvar estado e marcar bloqueado.
 
 ## 5. Executar pelo mecanismo real
 
@@ -61,7 +61,15 @@ Executar em paralelo apenas tarefas independentes. Integrar mudanças sequencial
 
 Se não houver controle real de sessões, entregar comandos/prompts revisáveis e marcar pendente de aplicação; não declarar que o ORCA está configurado. Não habilitar bypass de permissões para resolver uma falha de coordenação.
 
-## 6. Exigir evidência e concluir
+## 6. Preparar continuidade antes de executar
+
+Ler [continuidade.md](references/continuidade.md). No início, confirmar pelo menos uma alternativa em outra plataforma para papéis críticos, quando houver acesso. Criar checkpoints após marcos, antes de efeitos externos e antes de troca planejada. Usar [checkpoint-template.md](assets/checkpoint-template.md) e [evento-template.json](assets/evento-template.json). Não depender de uma última resposta do agente já sem cota para salvar o estado.
+
+Manter apenas um dono ativo de escrita por tarefa e coordenação; confirmar parada/revogação do anterior antes de transferir. Se o host não conseguir controlar sessões ou observar erros sem LLM, registrar **continuidade assistida**, preparar a retomada e explicar a ação manual necessária. Uma skill instrucional não implementa monitor, wrapper de processos nem troca automática de terminal. Não afirmar failover automático testado apenas pela existência do JSON.
+
+Para projeto novo, usar [inicio-projeto.md](references/inicio-projeto.md) para verificar ferramentas, permissões, mapa mínimo, critérios de aceite e retomada. Não instalar esta skill na conta ChatGPT; manter a fonte no GitHub.
+
+## 7. Exigir evidência e concluir
 
 - Definir testes a partir de comportamento e risco. Exigir checks do projeto e testes proporcionais, sem criar suítes que apenas copiem implementação.
 - Para login, pagamentos, dados pessoais, autorização ou estado concorrente, revisar servidor, acesso por recurso, segredos, idempotência e integridade. Aplicar codigo-confiavel quando disponível.
